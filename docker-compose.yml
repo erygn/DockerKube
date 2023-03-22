@@ -1,0 +1,12 @@
+services:
+  app:
+    image: node:18-alpine
+    command: "npm config set strict-ssl false && npm install && node server.js"
+    ports:
+      - 8000:8000
+    working_dir: /app
+    volumes:
+      - ./:/app
+    environment:
+      SERVER_PORT: 8000
+      NODE_ENV: production

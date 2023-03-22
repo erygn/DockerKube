@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      node: web
+  template:
+    metadata:
+      labels:
+        node: web
+    spec:
+      containers:
+      - name: node-site
+        image: node-kube
+        imagePullPolicy: Never
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: node-entrypoint
+  namespace: default
+spec:
+  type: NodePort
+  selector:
+    node: web
+  ports:
+  - port: 8000
+    targetPort: 8000
+    nodePort: 30001
