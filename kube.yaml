@@ -4,7 +4,7 @@ metadata:
   name: node
   namespace: default
 spec:
-  replicas: 1
+  replicas: 4
   selector:
     matchLabels:
       node: web

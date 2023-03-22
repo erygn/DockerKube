@@ -14,6 +14,10 @@ app.get('/update/v2', (req, res) => {
   res.send('Update image v2!')
 })
 
+app.get('/update/v3', (req, res) => {
+  res.send('Update image v3!')
+})
+
 app.listen(port, () => {
   console.log(`Server running on port ${port}`)
 })
