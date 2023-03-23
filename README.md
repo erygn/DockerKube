@@ -22,3 +22,13 @@ kubectl rollout status deployment/node
 
 Supprimer Kube
 kubectl delete -f kube.yaml
+
+## Helm
+
+helm create node-helm
+
+helm install node-helm node-helm
+
+helm upgrade --install node-helm node-helm
+
+helm uninstall node-helm
