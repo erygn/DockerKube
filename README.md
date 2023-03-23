@@ -12,7 +12,7 @@ docker run -d -p 8000:8000 --name node-kube node-kube
 kubectl apply -f kube.yaml
 
 Mise à jour image (nouvelle route GET /update/v2)
-kubectl set image deployment/node node-site=node-kube-v2
+kubectl set image deployment/node node-site=node-kube:v3
 
 Revenir en arrière (pour bien voir qu'on a plus accès à /update/v2)
 kubectl rollout undo deployment/node

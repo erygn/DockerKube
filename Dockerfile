@@ -9,7 +9,6 @@ COPY package-lock.json package-lock.json
 FROM base as prod
 ENV SERVER_PORT=8000
 ENV NODE_ENV=production
-RUN npm config set strict-ssl false
 RUN npm ci --production
 COPY . .
 CMD [ "node", "server.js" ]
