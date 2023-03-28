@@ -25,10 +25,24 @@ kubectl delete -f kube.yaml
 
 ## Helm
 
+cd helm
+
 helm create node-helm
 
 helm install node-helm node-helm
 
 helm upgrade --install node-helm node-helm
 
+helm history node-helm
+
 helm uninstall node-helm
+
+## Flux
+
+kubectl create namespace production
+
+flux bootstrap github --owner=erygn --repository=DockerKube --branch=main --path=./ --personal
+
+flux create source git production --url=https://github.com/erygn/DockerKube --branch=main --interval=30s --export > ./production-source.yaml
+
+flux create kustomization production --source production --path="./" --prune=true --interval=5m --export > ./production-kustom.yaml
